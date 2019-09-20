@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/pro-gallery/static/css/main.1733a82b.chunk.css",
-    "main.js": "/pro-gallery/static/js/main.8a08bdfb.chunk.js",
-    "main.js.map": "/pro-gallery/static/js/main.8a08bdfb.chunk.js.map",
+    "main.css": "/pro-gallery/static/css/main.363c95ef.chunk.css",
+    "main.js": "/pro-gallery/static/js/main.df3b18ed.chunk.js",
+    "main.js.map": "/pro-gallery/static/js/main.df3b18ed.chunk.js.map",
     "runtime~main.js": "/pro-gallery/static/js/runtime~main.0f1f2266.js",
     "runtime~main.js.map": "/pro-gallery/static/js/runtime~main.0f1f2266.js.map",
-    "static/css/2.db3a31a5.chunk.css": "/pro-gallery/static/css/2.db3a31a5.chunk.css",
-    "static/js/2.985c13c9.chunk.js": "/pro-gallery/static/js/2.985c13c9.chunk.js",
-    "static/js/2.985c13c9.chunk.js.map": "/pro-gallery/static/js/2.985c13c9.chunk.js.map",
+    "static/css/2.96121624.chunk.css": "/pro-gallery/static/css/2.96121624.chunk.css",
+    "static/js/2.30840ed1.chunk.js": "/pro-gallery/static/js/2.30840ed1.chunk.js",
+    "static/js/2.30840ed1.chunk.js.map": "/pro-gallery/static/js/2.30840ed1.chunk.js.map",
     "index.html": "/pro-gallery/index.html",
-    "precache-manifest.f0b3db71494127840ff336b2734b4228.js": "/pro-gallery/precache-manifest.f0b3db71494127840ff336b2734b4228.js",
+    "precache-manifest.6d39b079523b8c62daac889b7bddf929.js": "/pro-gallery/precache-manifest.6d39b079523b8c62daac889b7bddf929.js",
     "service-worker.js": "/pro-gallery/service-worker.js",
-    "static/css/2.db3a31a5.chunk.css.map": "/pro-gallery/static/css/2.db3a31a5.chunk.css.map",
-    "static/css/main.1733a82b.chunk.css.map": "/pro-gallery/static/css/main.1733a82b.chunk.css.map",
-    "static/media/progallery-svg-font-icons.scss": "/pro-gallery/static/media/progallery-svg-font-icons.eaf3da08.woff"
+    "static/css/2.96121624.chunk.css.map": "/pro-gallery/static/css/2.96121624.chunk.css.map",
+    "static/css/main.363c95ef.chunk.css.map": "/pro-gallery/static/css/main.363c95ef.chunk.css.map",
+    "static/media/main.css": "/pro-gallery/static/media/progallery-svg-font-icons.76bb6aca.svg"
   }
 }
