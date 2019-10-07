@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/pro-gallery/static/css/main.365b0104.chunk.css",
-    "main.js": "/pro-gallery/static/js/main.c7a0bbdb.chunk.js",
-    "main.js.map": "/pro-gallery/static/js/main.c7a0bbdb.chunk.js.map",
-    "runtime~main.js": "/pro-gallery/static/js/runtime~main.ab067237.js",
-    "runtime~main.js.map": "/pro-gallery/static/js/runtime~main.ab067237.js.map",
-    "static/css/2.653462cc.chunk.css": "/pro-gallery/static/css/2.653462cc.chunk.css",
-    "static/js/2.e5aea950.chunk.js": "/pro-gallery/static/js/2.e5aea950.chunk.js",
-    "static/js/2.e5aea950.chunk.js.map": "/pro-gallery/static/js/2.e5aea950.chunk.js.map",
+    "main.css": "/pro-gallery/static/css/main.b0898b36.chunk.css",
+    "main.js": "/pro-gallery/static/js/main.a901a256.chunk.js",
+    "main.js.map": "/pro-gallery/static/js/main.a901a256.chunk.js.map",
+    "runtime~main.js": "/pro-gallery/static/js/runtime~main.13fb28ce.js",
+    "runtime~main.js.map": "/pro-gallery/static/js/runtime~main.13fb28ce.js.map",
+    "static/css/2.0d1f06b3.chunk.css": "/pro-gallery/static/css/2.0d1f06b3.chunk.css",
+    "static/js/2.c9ec5d6d.chunk.js": "/pro-gallery/static/js/2.c9ec5d6d.chunk.js",
+    "static/js/2.c9ec5d6d.chunk.js.map": "/pro-gallery/static/js/2.c9ec5d6d.chunk.js.map",
     "index.html": "/pro-gallery/index.html",
-    "precache-manifest.7f24a0fdef60a90d1fb83082b0e2bf32.js": "/pro-gallery/precache-manifest.7f24a0fdef60a90d1fb83082b0e2bf32.js",
+    "precache-manifest.9edf7b5776da3a4ae95414e1ac178513.js": "/pro-gallery/precache-manifest.9edf7b5776da3a4ae95414e1ac178513.js",
     "service-worker.js": "/pro-gallery/service-worker.js",
-    "static/css/2.653462cc.chunk.css.map": "/pro-gallery/static/css/2.653462cc.chunk.css.map",
-    "static/css/main.365b0104.chunk.css.map": "/pro-gallery/static/css/main.365b0104.chunk.css.map"
+    "static/css/2.0d1f06b3.chunk.css.map": "/pro-gallery/static/css/2.0d1f06b3.chunk.css.map",
+    "static/css/main.b0898b36.chunk.css.map": "/pro-gallery/static/css/main.b0898b36.chunk.css.map",
+    "static/media/main.css": "/pro-gallery/static/media/progallery-svg-font-icons.76bb6aca.svg"
   }
 }
