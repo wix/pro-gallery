@@ -619,6 +619,7 @@ class ItemView extends GalleryComponent {
   }
 
   getItemInner() {
+    
     const { styleParams, type, visible } = this.props;
     let itemInner;
     const imageDimensions = this.getImageDimensions();

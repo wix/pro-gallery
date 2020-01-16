@@ -410,6 +410,7 @@ export class GalleryContainer extends React.Component {
     { items, styles, container, watermarkData, itemsDimensions },
     curState,
   ) {
+
     if (utils.isVerbose()) {
       console.count('PROGALLERY [COUNT] reCreateGalleryExpensively');
       console.time('PROGALLERY [TIME] reCreateGalleryExpensively');
@@ -509,6 +510,8 @@ export class GalleryContainer extends React.Component {
         },
       };
 
+      
+      
       if (this.layouter && isNew.addedItems) {
         layoutParams.options.useExistingLayout = true;
       } else {

@@ -58,6 +58,7 @@ export class Item {
 
   resize(scaleOrDimensions) {
     let scale = 1;
+    console.log('NEWWW', scaleOrDimensions);
     if (scaleOrDimensions === false) {
       return;
     } else if (scaleOrDimensions > 0) {
@@ -66,9 +67,17 @@ export class Item {
       if (scaleOrDimensions.width) {
         const w = Math.max(1, scaleOrDimensions.width);
         scale = w / this.width;
+        this.height /= scale;
+        this.width *= scale;
+        this.resized = true;
+        return this;
       } else if (scaleOrDimensions.height) {
         const h = Math.max(1, scaleOrDimensions.height);
         scale = h / this.height;
+        this.height *= scale;
+        this.width /= scale;
+        this.resized = true;
+        return this;
       }
     }
 

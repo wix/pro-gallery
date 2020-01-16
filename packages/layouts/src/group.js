@@ -31,6 +31,8 @@ const GROUP_SIZES_BY_MAX_SIZE = {
 
 export class Group {
   constructor(config) {
+    console.log('NEWWW', config);
+
     this.idx = config.idx;
     this.stripIdx = config.stripIdx;
     this.inStripIdx = config.inStripIdx;
@@ -201,7 +203,9 @@ export class Group {
 
   getGroupType(forcedGroupSize) {
     //---------| Override with specifically defined rotating group types (ignores everything else)
-    if (this.rotatingGroupTypes) {
+    if (!this.testttt || this.useSurfaceCalc) {
+      return 'S'
+    } else if (this.rotatingGroupTypes) {
       const groupTypesArr = String(this.rotatingGroupTypes).split(',');
       return groupTypesArr[this.idx % groupTypesArr.length];
 
@@ -325,6 +329,7 @@ export class Group {
   placeItems(forcedGroupSize) {
     this.type = this.getGroupType(forcedGroupSize);
 
+    console.log('NEWWW', this.type);
     //---------| Render the images by the groupType
     let items = [];
     let item;
@@ -351,7 +356,7 @@ export class Group {
 
         item = this.safeGetItem(1);
         item.pinToCorner('bottom-left');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items.push(item);
 
@@ -368,7 +373,7 @@ export class Group {
         item = this.safeGetItem(1);
         item.pinToCorner('top-right');
         item.innerOffset = [0, 0];
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items.push(item);
 
@@ -383,13 +388,13 @@ export class Group {
 
         item = this.safeGetItem(1);
         item.pinToCorner('top-right');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items.push(item);
 
         item = this.safeGetItem(2);
         item.pinToCorner('bottom-left');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items.push(item);
 
@@ -404,13 +409,13 @@ export class Group {
 
         item = this.safeGetItem(2);
         item.pinToCorner('bottom-right');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items.push(item);
 
         item = this.safeGetItem(0);
         item.pinToCorner('top-left');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items = [item].concat(items);
 
@@ -425,13 +430,13 @@ export class Group {
 
         item = this.safeGetItem(1);
         item.pinToCorner('bottom-left');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items.push(item);
 
         item = this.safeGetItem(2);
         item.pinToCorner('top-right');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items.push(item);
 
@@ -446,13 +451,13 @@ export class Group {
 
         item = this.safeGetItem(2);
         item.pinToCorner('bottom-right');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items.push(item);
 
         item = this.safeGetItem(0);
         item.pinToCorner('top-left');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items = [item].concat(items);
 
@@ -469,14 +474,14 @@ export class Group {
         item = this.safeGetItem(2);
         item.pinToCorner('bottom-left');
         item.setPosition('relative');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         items.push(item);
 
         //the middle item must be last to position it in the middle (h must be full height)
         item = this.safeGetItem(1);
         item.setPosition('relative');
-        item.resize(w / item.width);
+        item.resize({ width: item.width });
         h += item.height;
         item.pinToCorner('top', items[0]);
         items = [items[0], item, items[1]];
@@ -494,14 +499,14 @@ export class Group {
         item = this.safeGetItem(2);
         item.pinToCorner('top-right');
         item.setPosition('relative');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         items.push(item);
 
         //the middle item must be last to position it in the middle (w must be full width)
         item = this.safeGetItem(1);
         item.setPosition('relative');
-        item.resize(h / item.height);
+        item.resize({ height: item.height });
         w += item.width;
         item.pinToCorner('left', items[0]);
         items = [items[0], item, items[1]];
@@ -516,16 +521,19 @@ export class Group {
   }
 
   resizeToHeight(height) {
-    this.height = height;
     this.width = this.getWidthByHeight(height);
+    this.height = height;
     this.resizeItems();
+
+    console.log('NEWWW', 'resizeToHeight', height, this.width, this.height);
   }
-
+  
   resizeToWidth(width) {
-    this.width = width;
     this.height = this.getHeightByWidth(width);
-
+    this.width = width;
+    
     this.resizeItems();
+    console.log('NEWWW', 'resizeToWidth', width, this.width, this.height);
   }
 
   resizeItems() {
@@ -534,7 +542,9 @@ export class Group {
         ? this.items.slice().reverse()
         : this.items;
     items.forEach((item, i) => {
-      item.resize(this.getItemDimensions(items, i));
+      item.width = this.width;
+      item.height = this.height;
+      // item.resize(this.getItemDimensions(it2ems, i));
       item.group = {
         top: this.top,
         left: this.left,
@@ -601,6 +611,7 @@ export class Group {
     let Rm = 1;
     const M = this.imageMargin * 2;
     const R = this.items.map(item => item.width / item.height);
+    const S = this.width * this.height;
     switch (this.type) {
       // ---------------------------------
       // GENERAL FORMULA:
@@ -613,10 +624,14 @@ export class Group {
       // ---------------------------------
       //    const H = W * Rg + M * (Vi - Hi * Rg);
 
+      case 'S':
+        return S / W;
+        break;
       default:
       case '1':
         Rg = 1 / R[0];
         Rm = 1 - Rg;
+        return W / S[0];
         break;
       case '2h':
         Rg = 1 / (R[0] + R[1]);
@@ -661,6 +676,7 @@ export class Group {
     let Rm = 1;
     const M = this.imageMargin * 2;
     const R = this.items.map(item => item.width / item.height);
+    const S = this.width * this.height;
     switch (this.type) {
       // ---------------------------------
       // GENERAL FORMULA:
@@ -671,10 +687,16 @@ export class Group {
       // ---------------------------------
       // | W = H * Rg + M * Rm |
       // ---------------------------------
+      case 'S':
+        Rg = R[0];
+        Rm = 1 - Rg;
+        return S / H;
+        break;
       default:
       case '1':
         Rg = R[0];
         Rm = 1 - Rg;
+        return S / H;
         break;
       case '2h':
         Rg = R[0] + R[1];

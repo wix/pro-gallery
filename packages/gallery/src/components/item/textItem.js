@@ -37,6 +37,11 @@ export default class TextItem extends GalleryComponent {
   processInnerhtml(html) {
     // Remove html class name from inner html elements
     // In older version of the text editor we used font themes (set as classes). Without the iframe it clashes with Santa's css
+    return  (`
+      width: ${this.props.imageDimensions.width} <br/>
+      height: ${this.props.imageDimensions.height}<br/>
+      surface: ${this.props.imageDimensions.width * this.props.imageDimensions.height}
+    `);
     try {
       return html.replace(/class="font_\d+"/gm, '');
     } catch (e) {
@@ -58,7 +63,7 @@ export default class TextItem extends GalleryComponent {
     const htmlParam = { dangerouslySetInnerHTML: { __html: processedHtml } };
     const changeBgColor = {
       style: Object.assign(
-        dimensions,
+        // dimensions,
         styleParams.cubeType === 'fit'
           ? { backgroundColor: style.bgColor }
           : {},
