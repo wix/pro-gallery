@@ -204,7 +204,7 @@ export class Group {
   getGroupType(forcedGroupSize) {
     //---------| Override with specifically defined rotating group types (ignores everything else)
     if (!this.testttt || this.useSurfaceCalc) {
-      return 'S'
+      return 'S';
     } else if (this.rotatingGroupTypes) {
       const groupTypesArr = String(this.rotatingGroupTypes).split(',');
       return groupTypesArr[this.idx % groupTypesArr.length];
@@ -527,11 +527,11 @@ export class Group {
 
     console.log('NEWWW', 'resizeToHeight', height, this.width, this.height);
   }
-  
+
   resizeToWidth(width) {
     this.height = this.getHeightByWidth(width);
     this.width = width;
-    
+
     this.resizeItems();
     console.log('NEWWW', 'resizeToWidth', width, this.width, this.height);
   }
@@ -612,6 +612,7 @@ export class Group {
     const M = this.imageMargin * 2;
     const R = this.items.map(item => item.width / item.height);
     const S = this.width * this.height;
+    const fixedHeight = 80;
     switch (this.type) {
       // ---------------------------------
       // GENERAL FORMULA:
@@ -625,7 +626,8 @@ export class Group {
       //    const H = W * Rg + M * (Vi - Hi * Rg);
 
       case 'S':
-        return S / W;
+        const fixedSurface = fixedHeight * W;
+        return (S + fixedSurface) / W;
         break;
       default:
       case '1':
