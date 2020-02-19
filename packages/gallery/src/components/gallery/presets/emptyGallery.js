@@ -3,14 +3,14 @@ import React from 'react';
 import ProGallery from '../proGallery/proGallery';
 import LAYOUTS from '../../../common/constants/layout';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.EMPTY,
 }
 
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
     gallerySize: styles.modifiedGallerySize ? styles.gallerySize : Math.round(styles.gallerySize * 9 + 100),
     modifiedGallerySize: true
   }

@@ -6,7 +6,7 @@ import { featureManager } from '../../helpers/versionsHelper';
 import SCROLL_DIRECTION from '../../../common/constants/scrollDirection';
 
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.MAGIC,
   cubeImages: undefined,
   cubeRatio: undefined,
@@ -123,7 +123,7 @@ const getStyleBySeed = (seed) => {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
     ...getStyleBySeed(styles.magicLayoutSeed)
   }
 }

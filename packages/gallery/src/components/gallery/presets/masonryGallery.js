@@ -4,7 +4,7 @@ import ProGallery from '../proGallery/proGallery';
 import LAYOUTS from '../../../common/constants/layout';
 import SCROLL_DIRECTION from '../../../common/constants/scrollDirection';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.MASONRY,
   cubeImages: false,
   scrollDirection: SCROLL_DIRECTION.VERTICAL,
@@ -13,7 +13,6 @@ export const fixedStyles = {
   showArrows: false,
   groupSize: 1,
   groupTypes: '1',
-  gallerySize: 0,
   fixedColumns: 0,
   hasThumbnails: false,
   enableScroll: true,
@@ -29,8 +28,7 @@ export const fixedStyles = {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
-    gallerySize: styles.gallerySize,
+    ...layoutStyles,
   }
 }
 export default class MasonryGallery extends React.Component {

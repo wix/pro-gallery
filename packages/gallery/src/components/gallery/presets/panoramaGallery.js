@@ -5,7 +5,7 @@ import LAYOUTS from '../../../common/constants/layout';
 import dimensionsHelper from '../../helpers/dimensionsHelper';
 import SCROLL_DIRECTION from '../../../common/constants/scrollDirection';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.PANORAMA,
   cubeImages: false,
   scrollDirection: SCROLL_DIRECTION.VERTICAL,
@@ -32,7 +32,7 @@ export const fixedStyles = {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
   }
 }
 

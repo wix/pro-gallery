@@ -4,7 +4,7 @@ import LAYOUTS from '../../../common/constants/layout';
 import INFO_BEHAVIOUR_ON_HOVER from '../../../common/constants/infoBehaviourOnHover';
 import SCROLL_DIRECTION from '../../../common/constants/scrollDirection';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.SLIDESHOW,
   enableInfiniteScroll: true,
   cubeRatio: '100%/100%',
@@ -39,7 +39,7 @@ export const fixedStyles = {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
   }
 }
 

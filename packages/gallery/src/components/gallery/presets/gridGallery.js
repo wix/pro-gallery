@@ -4,7 +4,7 @@ import LAYOUTS from '../../../common/constants/layout';
 import isEligibleForLeanGallery from '../leanGallery/isEligible';
 import LeanGallery from '../leanGallery/leanGallery';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.GRID,
   cubeImages: true,
   isVertical: true,
@@ -16,7 +16,6 @@ export const fixedStyles = {
   groupSize: 1,
   groupTypes: '1',
   fixedColumns: 0,
-  gallerySize: 0,
   hasThumbnails: false,
   enableScroll: true,
   cropOnlyFill: false,
@@ -31,7 +30,7 @@ export const fixedStyles = {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
     gallerySize: styles.modifiedGallerySize ? styles.gallerySize : Math.round(styles.gallerySize * 8.5 + 150),
     modifiedGallerySize: true
   }

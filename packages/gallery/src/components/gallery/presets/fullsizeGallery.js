@@ -6,7 +6,7 @@ import dimensionsHelper from '../../helpers/dimensionsHelper';
 import PLACEMENTS from '../../../common/constants/placements';
 import SCROLL_DIRECTION from '../../../common/constants/scrollDirection';
 
-export const fixedStyles = {
+export const layoutStyles = {
   galleryLayout: LAYOUTS.FULLSIZE,
   cubeImages: true,
   cubeRatio: '100%/100%',
@@ -39,7 +39,7 @@ export const fixedStyles = {
 export const createStyles = styles => {
   return {
     ...styles,
-    ...fixedStyles,
+    ...layoutStyles,
   }
 }
 
