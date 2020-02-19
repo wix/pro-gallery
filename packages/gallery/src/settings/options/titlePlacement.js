@@ -4,7 +4,6 @@ import { createOptions } from '../utils/utils';
 export default {
   title: 'Texts Placement',
   isRelevant: (styleParams) => {
-    debugger;
     return (styleParams.isVertical &&
     styleParams.groupSize === 1 && 
     !styleParams.oneRow) && 

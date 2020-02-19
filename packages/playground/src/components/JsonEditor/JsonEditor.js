@@ -3,7 +3,7 @@ import {Tooltip, Select, Menu, Icon, Collapse, Switch, Input, Slider, InputNumbe
 import {settingsManager} from '../../settings/settingsManager';
 import {INPUT_TYPES} from '../../settings/consts';
 import ColorPicker from '../ColorPicker/ColorPicker';
-import { addPresetStyles } from 'pro-gallery/dist/src/components/gallery/presets/presets'
+
 class JsonEditor extends React.Component {
   constructor() {
     super();
@@ -144,12 +144,10 @@ class JsonEditor extends React.Component {
 
 
   render() {
-    const {section, subSection, styleParam, expandIcon} = this.props;
-    let {styleParams} = this.props;
+    const {section, subSection, styleParams, styleParam, expandIcon} = this.props;
     const context = {
       isMobile: false,
     }
-    styleParams = addPresetStyles(styleParams)
     // const selectedProps = LayoutProps[selectedLayout];
     // let json = selectedProps ?
     //   Object.keys(selectedProps).reduce((acc, key) => {

@@ -45,10 +45,7 @@ export default {
   allowTitle: showImagesDisplaySection,
   allowDescription: showImagesDisplaySection,
   allowSlideshowCounter: (sp) => isSlideshowLayout(sp) && sp.isAutoSlideshow,
-  titlePlacement: (sp) => {
-    debugger;
-    return layoutPresentOuterInformation(sp) && showTexts(sp)
-  },
+  titlePlacement: (sp) => layoutPresentOuterInformation(sp) && showTexts(sp),
   hoveringBehaviour: showHoveringBehaviour,
   cubeImages: showThumbnailResize,
   cubeType: showThumbnailResize,
