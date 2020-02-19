@@ -3,10 +3,13 @@ import { createOptions } from '../utils/utils';
 
 export default {
   title: 'Texts Placement',
-  isRelevant: (styleParams) => (styleParams.isVertical &&
+  isRelevant: (styleParams) => {
+    debugger;
+    return (styleParams.isVertical &&
     styleParams.groupSize === 1 && 
-    styleParams.scrollDirection === GALLERY_CONSTS.scrollDirection.VERTICAL) && 
-    !styleParams.isSlider && !styleParams.isColumns,
+    !styleParams.oneRow) && 
+    !styleParams.isSlider && !styleParams.isColumns
+  },
   type: INPUT_TYPES.OPTIONS,
   default: GALLERY_CONSTS.placements.SHOW_ON_HOVER,
   options: createOptions('placements'),
