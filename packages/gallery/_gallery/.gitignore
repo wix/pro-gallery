@@ -1,0 +1,11 @@
+dist
+node_modules
+npm-debug.log.*
+target
+maven
+package-lock.json
+.history
+.DS_Store
+.idea
+.vscode
+yarn.lock
