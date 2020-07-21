@@ -77,7 +77,7 @@ class CssScrollHelper {
     );
   }
 
-  calcScrollCss({ domId, items, styleParams, isUnknownWidth }) {
+  calcScrollCss({ domId, items, styleParams }) {
     if (!(items && items.length)) {
       return [];
     }
@@ -101,7 +101,7 @@ class CssScrollHelper {
       maxStep;
     return items
       .map(item =>
-        this.calcScrollCssForItem({ domId, item, styleParams, isUnknownWidth }),
+        this.calcScrollCssForItem({ domId, item, styleParams }),
       )
   }
 
@@ -167,7 +167,7 @@ class CssScrollHelper {
     };
   }
 
-  calcScrollCssForItem({ domId, item, styleParams, isUnknownWidth }) {
+  calcScrollCssForItem({ domId, item, styleParams }) {
     const { type, createUrl, idx } = item;
     const itemTag = utils.hasNativeLazyLoadSupport() ? 'img' : 'canvas';
     let scrollCss = '';
@@ -179,7 +179,7 @@ class CssScrollHelper {
 
     if (type !== 'text') {
       //load hi-res image + loading transition
-      if (!utils.hasNativeLazyLoadSupport() && !isUnknownWidth && !item.isDimensionless) { //FAKE SSR
+      if (!utils.hasNativeLazyLoadSupport() && !item.isDimensionless) { //FAKE SSR
         const selector = createScrollSelectors(this.highResPadding(), `.${type}-item>${itemTag}`);
           scrollCss +=
           selector +
@@ -194,7 +194,7 @@ class CssScrollHelper {
         !utils.hasNativeLazyLoadSupport() &&
         !utils.deviceHasMemoryIssues() &&
         styleParams.imageLoadingMode === LOADING_MODE.BLUR &&
-        (!item.isTransparent || isUnknownWidth) &&
+        !item.isTransparent &&
         !item.isDimensionless
       ) {
         scrollCss +=
@@ -208,7 +208,7 @@ class CssScrollHelper {
         !utils.hasNativeLazyLoadSupport() &&
         !utils.deviceHasMemoryIssues() &&
         styleParams.imageLoadingMode === LOADING_MODE.MAIN_COLOR &&
-        (!item.isTransparent || isUnknownWidth) && //FAKE SSR
+        !item.isTransparent && //FAKE SSR
         !item.isDimensionless
       ) {
         scrollCss +=

@@ -424,7 +424,7 @@ export class GalleryContainer extends React.Component {
     this.createCssLayoutsIfNeeded(layoutParams);
   }
 
-  createCssLayoutsIfNeeded(layoutParams, isApproximateWidth = false) {
+  createCssLayoutsIfNeeded(layoutParams) {
     const {settings = {}} = this.props;
     const {avoidInlineStyles = true} = settings;
     if (avoidInlineStyles) {
@@ -432,10 +432,9 @@ export class GalleryContainer extends React.Component {
       // avoid inline styles === use layout css
       this.layoutCss = createCssLayouts({
         layoutParams,
-        isApproximateWidth,
         isMobile: utils.isMobile(),
         domId: this.props.domId,
-        galleryItems: isApproximateWidth? null : this.galleryStructure.galleryItems,
+        galleryItems: this.galleryStructure.galleryItems,
       });
     }
   }
@@ -590,8 +589,7 @@ export class GalleryContainer extends React.Component {
         this.loadItemsDimensionsIfNeeded();
       }
 
-      const isApproximateWidth = dimensionsHelper.isUnknownWidth() && !_styles.oneRow; //FAKE SSR
-      this.createCssLayoutsIfNeeded(layoutParams, isApproximateWidth, isNew);
+      this.createCssLayoutsIfNeeded(layoutParams);
 
       const shouldUseScrollCss = !isSEOMode() && (isEditMode() || this.state.gotFirstScrollEvent|| this.state.showMoreClickedAtLeastOnce);
       if (shouldUseScrollCss) {
@@ -742,7 +740,6 @@ export class GalleryContainer extends React.Component {
   getScrollCss({ domId, items, styleParams }) {
     this.scrollCss = cssScrollHelper.calcScrollCss({
       items,
-      isUnknownWidth: dimensionsHelper.isUnknownWidth(),
       styleParams,
       domId,
     });
@@ -927,7 +924,6 @@ export class GalleryContainer extends React.Component {
         />
         <ViewComponent
           isInDisplay={this.props.isInDisplay}
-          isUnknownWidth={dimensionsHelper.isUnknownWidth()}
           scrollingElement={this._scrollingElement}
           totalItemsCount={this.props.totalItemsCount} //the items passed in the props might not be all the items
           renderedItemsCount={this.props.renderedItemsCount}
