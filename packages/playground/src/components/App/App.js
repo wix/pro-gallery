@@ -231,7 +231,7 @@ export function App() {
           eventsListener={eventListener}
           totalItemsCount={getTotalItemsCount()}
           resizeMediaUrl={resizeMediaUrl}
-          useBlueprints={gallerySettings.useBlueprints} //Todo - use it react way
+          useBlueprints={true} //Todo - use it react way
           {...getExternalInfoRenderers()}
           {...blueprintProps}
         />}
