@@ -117,7 +117,9 @@ export default class LeanGallery extends React.Component {
     const minmaxFix = 1;
     const itemSize = this.calcItemSize() * minmaxFix;
 
-    const gridTemplateColumns = gridStyle === 1 ? `repeat(${numberOfImagesPerRow}, 1fr)` : `repeat(auto-fit, minmax(${itemSize}px, 1fr))`;
+    const useFixedColumns = this.state.numberOfCols > 0 || gridStyle === 1;
+    const numberOfCols = this.state.numberOfCols > 0 ? this.state.numberOfCols : numberOfImagesPerRow;
+    const gridTemplateColumns = useFixedColumns ? `repeat(${numberOfCols}, 1fr)` : `repeat(auto-fit, minmax(${itemSize}px, 1fr))`;
 
     return {
       gridTemplateColumns,
