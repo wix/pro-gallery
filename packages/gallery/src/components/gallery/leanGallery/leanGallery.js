@@ -38,6 +38,25 @@ export default class LeanGallery extends React.Component {
     }
   }
 
+  calcNumberOfColumns(galleryWidth) {
+    const gallerySize = this.calcItemSize();
+    let numOfCols = 1;
+    if (this.styleParams.fixedColumns > 0) {
+      numOfCols = this.styleParams.fixedColumns;
+    } else {
+      // find the number of columns that makes each column width the closet to the gallerySize
+      const numOfColsFloat = galleryWidth / gallerySize;
+      const roundFuncs = [Math.floor, Math.ceil];
+      const diffs = roundFuncs
+        .map(func => func(numOfColsFloat)) //round to top, round to bottom
+        .map(n => Math.round(galleryWidth / n)) //width of each col
+        .map(w => Math.abs(gallerySize - w)); //diff from gallerySize
+      const roundFunc = roundFuncs[diffs.indexOf(Math.min(...diffs))]; //choose the round function that has the lowest diff from the gallerySize
+      numOfCols = roundFunc(numOfColsFloat) || 1;
+    }
+    return numOfCols;
+  }
+
   componentDidMount() {
     this.eventsListener(GALLERY_CONSTS.events.APP_LOADED, {});
   }
@@ -195,7 +214,7 @@ export default class LeanGallery extends React.Component {
   }
 
   createContainerStyles(clickable) {
-    let { height = null } = this.state.itemStyle;
+    const { height = null } = this.state.itemStyle;
 
     return {
       ...this.createItemBorder(),
@@ -227,7 +246,9 @@ export default class LeanGallery extends React.Component {
     }
     if (this.node && (this.node.clientWidth !== this.clientWidth)) {
       this.clientWidth = this.node.clientWidth;
+      
       this.setState({
+        numberOfCols: this.calcNumberOfColumns(this.clientWidth),
         itemStyle: {
           width: this.clientWidth,
           height: Math.round(this.clientWidth / styles.cubeRatio),
