@@ -38,6 +38,7 @@
     "gh-pages-with-token": "^1.0.0",
     "html-webpack-plugin": "^4.0.0-beta.5",
     "jest": "^24.8.0",
+    "jest-environment-jsdom-fourteen": "^1.0.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -64,7 +65,7 @@
     "watch": "sleep 10 && node scripts/start.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": " ",
+    "test": "node scripts/test.js",
     "deploy": "node scripts/build.js && gh-pages-with-token -d build",
     "start-playground": "node scripts/start.js"
   },

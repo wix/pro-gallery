@@ -96,6 +96,7 @@ function SideBar({ items , blueprintsManager}) {
               section={settingsManager[searchResult].section}
               styleParam={searchResult}
               expandIcon={() => <Icon onClick={() => resetSearch()} type="close" />}
+              showAllStyles={true}
             />
           </Card>
         }
@@ -187,7 +188,7 @@ function SideBar({ items , blueprintsManager}) {
             <Form layout="vertical">
               <Form.Item label="View Mode">
                 <Select defaultValue={gallerySettings.viewMode || GALLERY_CONSTS.viewMode.SITE} onChange={val => setGallerySettings({ viewMode: val })}>
-                  {Object.entries(GALLERY_CONSTS.viewMode).map(([key, val]) => <Select.Option value={key}>{val}</Select.Option>)}
+                  {Object.entries(GALLERY_CONSTS.viewMode).map(([key, val]) => <Select.Option key={key} value={key}>{val}</Select.Option>)}
                 </Select>
               </Form.Item>
             </Form>
