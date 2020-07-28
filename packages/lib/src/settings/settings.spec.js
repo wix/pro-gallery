@@ -1,6 +1,6 @@
-import { GALLERY_CONSTS } from 'pro-gallery-lib';
+// import { GALLERY_CONSTS } from 'pro-gallery-lib';
 import { expect } from 'chai';
-import {settingsManager} from '../../settings/settingsManager';
+// import {settingsManager} from '../../settings/settingsManager';
 
 describe('styleParams - general', () => {
 
