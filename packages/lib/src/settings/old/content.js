@@ -106,7 +106,7 @@ export default {
   },
   gallerySizeRatio: {
     title: "Item Size (relative to width)",
-    description: "Set the items size relative to the width of the container",
+    description: "relative to width",
   },
   numberOfImagesPerRow: {
     title: "Images Per Row",

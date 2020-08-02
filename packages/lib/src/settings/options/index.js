@@ -62,9 +62,12 @@ import videoLoop from './videoLoop';
 import showArrows from './showArrows';
 import enableScroll from './enableScroll';
 import imagePlacementAnimation from './imagePlacementAnimation';
+import gallerySizeType from './gallerySizeType';
+import gallerySize from './gallerySize';
+import gallerySizePx from './gallerySizePx';
 
 export default {
-    itemClick,
+    itemClick,    
     imageMargin,
     hoveringBehaviour,
     enableInfiniteScroll,
@@ -127,5 +130,33 @@ export default {
     videoLoop,
     showArrows,
     enableScroll,
-    imagePlacementAnimation
+    imagePlacementAnimation,
+    gallerySizeType,
+    gallerySize,
+    gallerySizePx
+
 }
+
+
+// TODO = add the options:
+/* galleryLayout
+allowLeanGallery
+scrollDirection
+isAutoSlideshow
+playButtonForAutoSlideShow
+gallerySizeRatio
+itemOpacity
+allowSlideshowCounter
+loadMoreAmount
+arrowsColor
+imageLoadingColor
+oneColorAnimationColor
+imageQuality
+usmToggle
+usm_a
+usm_r
+usm_t
+hidePlay
+videoSound
+videoSpeed
+*/
