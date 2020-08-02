@@ -1,7 +1,6 @@
 import React from 'react';
 import {Tooltip, Select, Menu, Icon, Collapse, Switch, Input, Slider, InputNumber, Row, Col, Button, Divider} from 'antd';
-import {settingsManager} from '../../settings/settingsManager';
-import {INPUT_TYPES} from '../../settings/consts';
+import {INPUT_TYPES, galleryOptions} from 'pro-gallery-lib';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 class JsonEditor extends React.Component {
@@ -181,13 +180,13 @@ class JsonEditor extends React.Component {
 
     const activeKey = styleParam ? {activeKey: 'collapse' + styleParam} : {defaultActiveKey: []};
 
-    const json = Object.entries(settingsManager)
+    const json = Object.entries(galleryOptions)
       .filter(filterFunction)
       .reduce((acc, [key]) => {
         if (typeof styleParams[key] === 'undefined') {
           return acc
         } else {
-          acc[key] = settingsManager[key];
+          acc[key] = galleryOptions[key];
           acc[key].value = styleParams[key];
           return acc;
         }

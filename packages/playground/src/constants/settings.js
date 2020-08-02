@@ -1,3 +1,18 @@
+import { galleryOptions } from 'pro-gallery-lib';
+
+export const INPUT_TYPES = {
+    NUMBER: "NUMBER",
+    BOOLEAN: "BOOLEAN",
+    OPTIONS: "OPTIONS",
+    TEXT: "TEXT",
+    COLOR_PICKER: "COLOR_PICKER",
+    FONT_PICKER: "FONT_PICKER",
+    BUTTON: "BUTTON",
+    MULTISELECT: "MULTISELECT",
+    MULTIREPEAT: "MULTIREPEAT",
+};
+
+
 export const SECTIONS = {
     PRESET: 'Presets',
     LAYOUT: 'Layout Customization',
@@ -148,3 +163,17 @@ export const sectionByStyle = Object.assign({},
         [styleParam]: section
     }), {}))
 );
+
+
+export const settingsManager = stylesList.reduce((obj, styleParam) => {
+  const settingsData = galleryOptions[styleParam];
+
+  return {
+    ...obj,
+    [styleParam]: {
+      ...settingsData,
+      section: sectionByStyle[styleParam]
+    }
+  }
+}, {});
+
