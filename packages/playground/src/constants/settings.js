@@ -1,4 +1,4 @@
-import { gallerySettings } from 'pro-gallery-lib';
+import { galleryOptions } from 'pro-gallery-lib';
 
 export const INPUT_TYPES = {
     NUMBER: "NUMBER",
@@ -166,14 +166,14 @@ export const sectionByStyle = Object.assign({},
 
 
 export const settingsManager = stylesList.reduce((obj, styleParam) => {
-  const settingsData = gallerySettings[styleParam];
+  const settingsData = galleryOptions[styleParam];
 
-  return {
+  return settingsData ? {
     ...obj,
     [styleParam]: {
       ...settingsData,
       section: sectionByStyle[styleParam]
     }
-  }
+  } : obj
 }, {});
 
