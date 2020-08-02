@@ -5,8 +5,8 @@ import { useGalleryContext } from "../../hooks/useGalleryContext";
 import { CodePanel } from "../CodePanel";
 import { Benchmarks } from "../Benchmarks";
 import { List, Switch, Select, Form, InputNumber, Collapse, AutoComplete, Input, Button, Icon, Card } from "antd";
-import { SECTIONS } from '../../constants/settings';
-import { INPUT_TYPES, galleryOptions } from 'pro-gallery-lib';
+import { SECTIONS, settingsManager } from '../../constants/settings';
+import { INPUT_TYPES } from 'pro-gallery-lib';
 import { Divider, Alert } from 'antd';
 import comments from './comments';
 import { throttle } from "../../utils/utils";
@@ -32,7 +32,7 @@ function SideBar({ items , blueprintsManager}) {
   const _setStyleParams = throttle(setStyleParams, 1000);
   const createSearchString = (styleParam, searchTerm) => {
     let res = [styleParam];
-    const props = galleryOptions[styleParam];
+    const props = settingsManager[styleParam];
     res.push(props.title || '');
     res.push(props.description || '');
     if (props.type === INPUT_TYPES.OPTIONS) {
@@ -42,7 +42,7 @@ function SideBar({ items , blueprintsManager}) {
     return res;
   };
 
-  const dataSource = Object.entries(galleryOptions)
+  const dataSource = Object.entries(settingsManager)
     .filter(([styleParam]) => createSearchString(styleParam, searchTerm).indexOf(searchTerm.toLowerCase().replace(/ /g, '')) >= 0)
     .sort(([styleParam, props], [styleParam2, props2]) => props.title > props2.title ? 1 : -1)
     .map(([styleParam, props]) => (
@@ -93,7 +93,7 @@ function SideBar({ items , blueprintsManager}) {
               onChange={_setStyleParams}
               allStyleParams={styleParams}
               styleParams={styleParams}
-              section={galleryOptions[searchResult].section}
+              section={settingsManager[searchResult].section}
               styleParam={searchResult}
               expandIcon={() => <Icon onClick={() => resetSearch()} type="close" />}
               showAllStyles={true}
