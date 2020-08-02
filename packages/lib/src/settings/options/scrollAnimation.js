@@ -1,4 +1,5 @@
-import { INPUT_TYPES, GALLERY_CONSTS } from '../utils/constants';
+import { INPUT_TYPES } from '../utils/constants';
+import { default as GALLERY_CONSTS } from '../../common/constants';
 import { createOptions } from '../utils/utils';
 
 export default {

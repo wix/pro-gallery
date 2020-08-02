@@ -1,4 +1,5 @@
-import { GALLERY_CONSTS, INPUT_TYPES } from '../utils/constants';
+import { INPUT_TYPES } from '../utils/constants';
+import { default as GALLERY_CONSTS } from '../../common/constants';
 
 export default {
   title: 'Item Shadow Size',

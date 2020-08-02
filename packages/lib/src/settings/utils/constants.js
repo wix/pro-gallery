@@ -1,5 +1,3 @@
-export { GALLERY_CONSTS } from 'pro-gallery-lib';
-
 export const INPUT_TYPES = {
     NUMBER: "NUMBER",
     BOOLEAN: "BOOLEAN",
