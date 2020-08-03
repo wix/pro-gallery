@@ -174,6 +174,14 @@ export const settingsManager = stylesList.reduce((obj, styleParam) => {
       ...settingsData,
       section: sectionByStyle[styleParam]
     }
-  } : obj
+  } : {
+    ...obj,
+    [styleParam] :{
+      missing: true,
+      title: styleParam,
+      section: sectionByStyle[styleParam],
+      isRelevant: () => true
+    }
+  }
 }, {});
 

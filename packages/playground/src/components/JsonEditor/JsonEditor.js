@@ -181,7 +181,6 @@ class JsonEditor extends React.Component {
 
     const activeKey = styleParam ? {activeKey: 'collapse' + styleParam} : {defaultActiveKey: []};
 
-    console.log({settingsManager});
     const json = Object.entries(settingsManager)
       .filter(filterFunction)
       .reduce((acc, [key]) => {
@@ -197,10 +196,9 @@ class JsonEditor extends React.Component {
     const isSingleItem = !!styleParam;
 
     const Extra = settings => {
-      console.log({settings});
       if (settings.isRelevant(allStyleParams)) {
-        if (settings.isOld) {
-          return null;
+        if (settings.missing) {
+          return <Icon type="warning" style={{fontSize: 14, color: 'red'}} />
         } else {
           return <Icon type="check" style={{fontSize: 10, color: '#52c41a'}} />
         }
