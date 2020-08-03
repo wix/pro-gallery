@@ -1,6 +1,6 @@
-import { GALLERY_CONSTS, INPUT_TYPES } from '../utils/constants';
+import { INPUT_TYPES } from '../utils/constants';
+import { default as GALLERY_CONSTS } from '../../common/constants';
 import { createOptions } from '../utils/utils';
-
 
 export default {
   title: 'Item Size Units',
