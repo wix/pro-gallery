@@ -197,13 +197,13 @@ class JsonEditor extends React.Component {
 
     const Extra = settings => {
       if (settings.isRelevant(allStyleParams)) {
+        return <Icon type="check" style={{fontSize: 10, color: '#52c41a'}} />
+      } else {
         if (settings.missing) {
           return <Icon type="warning" style={{fontSize: 14, color: 'red'}} />
         } else {
-          return <Icon type="check" style={{fontSize: 10, color: '#52c41a'}} />
+          return <Tooltip placement="right" title="This param is not relevant in current scope"><Icon theme="twoTone" twoToneColor="#faad14" type="info-circle" /></Tooltip>
         }
-      } else {
-        return <Tooltip placement="right" title="This param is not relevant in current scope"><Icon theme="twoTone" twoToneColor="#faad14" type="info-circle" /></Tooltip>
       }
     }
     return (

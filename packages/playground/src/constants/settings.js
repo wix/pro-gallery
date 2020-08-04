@@ -180,7 +180,7 @@ export const settingsManager = stylesList.reduce((obj, styleParam) => {
       missing: true,
       title: styleParam,
       section: sectionByStyle[styleParam],
-      isRelevant: () => true
+      isRelevant: () => false
     }
   }
 }, {});
