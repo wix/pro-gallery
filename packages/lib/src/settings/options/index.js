@@ -65,6 +65,7 @@ import imagePlacementAnimation from './imagePlacementAnimation';
 import gallerySizeType from './gallerySizeType';
 import gallerySize from './gallerySize';
 import gallerySizePx from './gallerySizePx';
+import RCP from './RCP';
 
 export default {
     itemClick,    
@@ -133,7 +134,8 @@ export default {
     imagePlacementAnimation,
     gallerySizeType,
     gallerySize,
-    gallerySizePx
+    gallerySizePx,
+    RCP
 
 }
 
