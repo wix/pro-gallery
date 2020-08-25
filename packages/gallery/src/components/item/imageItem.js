@@ -16,6 +16,7 @@ export default class ImageItem extends GalleryComponent {
 
     this.removeLowResImageTimeoutId = undefined;
     this.handleHighResImageLoad = this.handleHighResImageLoad.bind(this);
+    this.handleHighResImageError = this.handleHighResImageError.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,14 @@ export default class ImageItem extends GalleryComponent {
       this.props.actions.setItemLoaded();
     } catch (e) {
       console.error('Failed to load high res image', e);
+    }
+  }
+
+  handleHighResImageError(e) {
+    if (this.state.retries > 1) {
+      console.error('High res image failed', e)
+    } else {
+      this.setState({retries: (this.state.retries || 0) + 1})
     }
   }
 
@@ -161,15 +170,17 @@ export default class ImageItem extends GalleryComponent {
       }
 
       const shouldRenderHighResImages = !isPrerenderMode() && !utils.isSSR();
+      const urlRetry = this.state.retries ? {retry: this.state.retries} : false;
       if (shouldRenderHighResImages) {
         const highres = <img
           key={'image_highres-' + id}
           className={`gallery-item-visible gallery-item gallery-item-preloaded ${isSEOMode() ? '' : 'gallery-item-hidden'}`}
           data-hook='gallery-item-image-img'
           alt={alt ? alt : 'untitled image'}
-          src={createUrl(GALLERY_CONSTS.urlSizes.RESIZED, isSEOMode() ? GALLERY_CONSTS.urlTypes.SEO : GALLERY_CONSTS.urlTypes.HIGH_RES)}
+          src={createUrl(GALLERY_CONSTS.urlSizes.RESIZED, isSEOMode() ? GALLERY_CONSTS.urlTypes.SEO : GALLERY_CONSTS.urlTypes.HIGH_RES, urlRetry)}
           loading="lazy"
           onLoad={this.handleHighResImageLoad}
+          onError={this.handleHighResImageError}
           style={{...restOfDimensions, ...(this.state.isHighResImageLoaded && {opacity: 1}), ...blockDownloadStyles}}
           {...imageProps}
         />;

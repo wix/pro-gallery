@@ -240,9 +240,11 @@ class GalleryItem {
     this.urls = {};
   }
 
-  createUrl(size, type) {
+  createUrl(size, type, queryParams = false) {
     try {
-      return this[size + '_url'][type]();
+      const url = this[size + '_url'][type]();
+      const query = queryParams ? ((url.indexOf('?') > 0 ? '&' : '?') + Object.entries(queryParams).map(keyval => keyval.join('=')).join('&')) : '';
+      return url + query;
     } catch (e) {
       return '';
     }
