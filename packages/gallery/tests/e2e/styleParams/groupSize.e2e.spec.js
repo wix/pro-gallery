@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('groupSize - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should have max group size of 3 (groupSize=3)', async () => {

@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('hoveringBehaviour - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should show hover container on hover event when "hoveringBehaviour" is "APPEAR', async () => {

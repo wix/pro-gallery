@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('magic - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('magic - scrollDirection = vertical, magicLayoutSeed = 1 (vertical)', async () => {

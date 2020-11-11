@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('collageDensity - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should have collageDensity of 0', async () => {

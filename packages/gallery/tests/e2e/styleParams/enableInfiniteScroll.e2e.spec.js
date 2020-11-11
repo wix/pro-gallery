@@ -6,12 +6,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('enableInfiniteScroll - e2e', () => {
   let driver;
   
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should have "Load More" button when "enableInfiniteScroll" is "false"', async () => {

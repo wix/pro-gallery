@@ -20,12 +20,12 @@ describe('leanGallery - e2e', () => {
     scrollDirection: GALLERY_CONSTS.scrollDirection.VERTICAL,
   };
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
 

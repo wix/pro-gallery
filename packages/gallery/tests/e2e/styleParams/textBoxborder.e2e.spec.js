@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('textBoxBorder - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should render border-width=2, border-radius=2', async () => {

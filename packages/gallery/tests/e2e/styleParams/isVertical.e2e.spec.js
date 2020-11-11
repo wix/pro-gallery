@@ -6,12 +6,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('isVertical - e2e', () => {
   let driver;
   
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should render a gallery with vertical orientation when "isVertical" is "true"', async () => {

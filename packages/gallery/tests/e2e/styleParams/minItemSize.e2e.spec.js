@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('minItemSize - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('minimum item size of 120', async () => {

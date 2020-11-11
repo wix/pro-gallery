@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('groupTypes - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should set groups of "1,2v,2h"', async () => {

@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('oneRow - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should render horizontal gallery when "oneRow" is "true"', async () => {

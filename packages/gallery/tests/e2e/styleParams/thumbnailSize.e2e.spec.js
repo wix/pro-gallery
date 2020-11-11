@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('thumbnailSize - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should set thumbnailSize to 100', async () => {

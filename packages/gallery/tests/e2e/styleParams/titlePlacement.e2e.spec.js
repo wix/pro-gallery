@@ -7,12 +7,12 @@ expect.extend({ toMatchImageSnapshot });
 describe('titlePlacement - e2e', () => {
   let driver;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     driver = new GalleryDriver();
     await driver.launchBrowser();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     driver.closeBrowser();
   });
   it('should place texts on the bottom of the items', async () => {
