@@ -15,7 +15,7 @@ import s from './SideBar.module.scss';
 import { GALLERY_CONSTS, notEligibleReasons, isEligibleForLeanGallery } from 'pro-gallery';
 import 'antd/dist/antd.css';
 import { getContainerUrlParams } from "./helper";
-import {utils} from 'pro-gallery-lib';
+import {utils, getPresetStyles} from 'pro-gallery-lib';
 import {StylesList} from './StyleList';
 
 function SideBar({ items, blueprintsManager, visible }) {
@@ -117,7 +117,7 @@ function SideBar({ items, blueprintsManager, visible }) {
               />
             </Collapse.Panel> : null}
           <Collapse.Panel header={SECTIONS.PRESET} key="1">
-            <LayoutPicker selectedLayout={styleParams.galleryLayout} onSelectLayout={galleryLayout => setStyleParams('galleryLayout', galleryLayout)} />
+            <LayoutPicker selectedLayout={styleParams.galleryLayout} onSelectLayout={galleryLayout => { debugger; setStyleParams(getPresetStyles(galleryLayout))}} />
             <Divider />
             <JsonEditor
               onChange={_setStyleParams}

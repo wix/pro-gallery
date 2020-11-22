@@ -741,11 +741,12 @@ export class GalleryContainer extends React.Component {
     });
   }
 
-  createDynamicStyles({overlayBackground}) {
+  createDynamicStyles({overlayBackground, imageLoadingMode, imageLoadingColor}) {
     const useSSROpacity = isPrerenderMode() && !this.props.settings.disableSSROpacity;
     this.dynamicStyles = `
       ${!useSSROpacity ? '' : `#pro-gallery-${this.props.domId} .gallery-item-container { opacity: 0 }`}
       ${!overlayBackground ? '' : `#pro-gallery-${this.props.domId} .gallery-item-hover::before { background-color: ${overlayBackground} !important}`}
+      ${imageLoadingMode !== GALLERY_CONSTS.loadingMode.COLOR ? '' : `#pro-gallery-${this.props.domId} .load-with-color { background-color: ${imageLoadingColor} !important}`}
     `.trim();
   }
 

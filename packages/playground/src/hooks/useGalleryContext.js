@@ -76,7 +76,13 @@ export function useGalleryContext(blueprintsManager, shouldUseBlueprintsFromServ
 
   const setStyleParams = (newProp, value) => {
     // console.log(`[STYLE PARAMS - VALIDATION] settings styleParam in the context`, newProp, value, context.styleParams);
-    const newContext = {styleParams: {...getInitialStyleParams(), ...getStyleParamsFromUrl(), [newProp]: value}}
+    let newStyle = {}
+    if (typeof newProp === 'object') {
+      newStyle = newProp;
+    } else {
+      newStyle = {[newProp]: value}      
+    }
+    const newContext = {styleParams: {...getInitialStyleParams(), ...getStyleParamsFromUrl(), ...newStyle}}
     if(getGallerySettings().useBlueprints) {
       requestNewBlueprint(newContext);
     }

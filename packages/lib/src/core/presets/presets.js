@@ -51,6 +51,39 @@ import {
   createStyles as emptyStyles,
 } from './emptyGallery';
 
+const getPresetStyles = (galleryLayout) => {
+  switch (galleryLayout) {
+    case LAYOUTS.MASONRY:
+      return masonry;
+    case LAYOUTS.GRID:
+      return grid;
+    case LAYOUTS.THUMBNAIL:
+      return thumbnails;
+    case LAYOUTS.SLIDER:
+      return slider;
+    case LAYOUTS.SLIDESHOW:
+      return slideshow;
+    case LAYOUTS.PANORAMA:
+      return panorama;
+    case LAYOUTS.COLUMN:
+      return column;
+    case LAYOUTS.MAGIC:
+      return magic;
+    case LAYOUTS.FULLSIZE:
+      return fullsize;
+    case LAYOUTS.BRICKS:
+      return bricks;
+    case LAYOUTS.MIX:
+      return mix;
+    case LAYOUTS.ALTERNATE:
+      return alternate;
+    case LAYOUTS.COLLAGE:
+      return collage;
+    case LAYOUTS.EMPTY:
+    default:
+      return empty;
+  }
+}
 const addPresetStyles = (styles) => {
   const galleryType = styles.galleryType;
   const galleryLayoutV1 = styles.galleryType;
@@ -156,4 +189,10 @@ const isInPreset = (galleryLayout, paramToCheck) => {
   return Object.keys(NEW_PRESETS[layoutName]).includes(paramToCheck);
 };
 
-export { addPresetStyles, NEW_PRESETS, getLayoutName, isInPreset };
+export {
+  addPresetStyles,
+  NEW_PRESETS,
+  getLayoutName,
+  isInPreset,
+  getPresetStyles,
+};

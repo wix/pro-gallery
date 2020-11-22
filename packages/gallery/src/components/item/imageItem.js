@@ -64,7 +64,7 @@ export default class ImageItem extends GalleryComponent {
         : '',
       styleParams.imageLoadingMode === GALLERY_CONSTS.loadingMode.COLOR
         ? 'load-with-color'
-        : '',
+        : 'load-with-default-color',
     ].join(' ');
 
     return imageContainerClassNames

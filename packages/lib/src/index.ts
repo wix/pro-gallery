@@ -7,6 +7,7 @@ export { ItemsHelper } from './core/helpers/itemsHelper';
 export { default as processLayouts } from './core/helpers/layoutHelper';
 export { featureManager } from './core/helpers/versionsHelper';
 export { addPresetStyles } from './core/presets/presets';
+export { getPresetStyles } from './core/presets/presets';
 export { NEW_PRESETS } from './core/presets/presets';
 export { getLayoutName } from './core/presets/presets';
 export { isInPreset } from './core/presets/presets';
