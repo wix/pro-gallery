@@ -217,35 +217,35 @@ function isWithinPaddingHorizontally({
 }
 
 function horizontalCssScrollTo(scroller, from, to, duration, isRTL) {
-  const change = (to - from);
-
-  const scrollerInner = scroller.firstChild;
-
-  scroller.setAttribute('data-scrolling', 'true');
-  Object.assign(scroller.style, {
-    'scroll-snap-type': 'none'
-  })
-  Object.assign(scrollerInner.style, {
-    transition: `margin ${duration}ms linear`,
-    '-webkit-transition': `margin ${duration}ms linear`,
-  }, (isRTL) ? {
-    marginRight: `${change}px`,
-  } : {
-    marginLeft: `${-1 * change}px`,
-  });
-
   return new Promise(resolve => {
+    const change = Math.abs(to - from);
+
+    if (!(change > 0)) {
+      resolve(to);
+    }
+
+    const marginDir = `margin-${isRTL ? 'right' : 'left'}`;
+    const scrollerInner = scroller.firstChild;
+
+    scroller.setAttribute('data-scrolling', 'true');
+    Object.assign(scroller.style, {
+      'scroll-snap-type': 'none'
+    })
+
+    Object.assign(scrollerInner.style, {
+      transition: `none`,
+      [marginDir]: `${change}px`,
+    });
+
+    scroller.scrollLeft = to;
+
+    Object.assign(scrollerInner.style, {
+      transition: `margin ${duration}ms ease`,
+      [marginDir]: 0,
+    });
+
     setTimeout(() => {
-      Object.assign(scrollerInner.style, {
-        transition: `none`,
-        '-webkit-transition': `none`,
-      }, isRTL ? {
-        marginRight: 0,
-      } : {
-        marginLeft: 0,
-      });
       scroller.style.removeProperty('scroll-snap-type');
-      scroller.scrollLeft = to;
       scroller.setAttribute('data-scrolling', '');
       resolve(to);
     }, duration);
