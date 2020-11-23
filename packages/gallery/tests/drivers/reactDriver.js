@@ -116,6 +116,7 @@ class galleryDriver {
       scroll: this.get.scroll,
       styleParams: this.get.styleParams,
       actions: this.get.actions,
+      settings: this.get.settings,
     };
 
     this.customHoverRenderer = () => {};
