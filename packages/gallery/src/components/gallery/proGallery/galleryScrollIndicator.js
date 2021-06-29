@@ -1,5 +1,5 @@
 import React from 'react';
-import { utils } from 'pro-gallery-lib';
+// import { utils } from 'pro-gallery-lib';
 import { cssScrollHelper } from '../../helpers/cssScrollHelper';
 import { GalleryComponent } from '../../galleryComponent';
 
@@ -11,7 +11,8 @@ export default class ScrollIndicator extends GalleryComponent {
       scrollTop: 0,
       scrollLeft: 0,
     };
-    this.debouncedOnScroll = utils.debounce(props.onScroll, 50);
+    // this.debouncedOnScroll = utils.debounce(props.onScroll, 50);
+    this.debouncedOnScroll = props.onScroll;
   }
 
   removeScrollListener() {
@@ -45,12 +46,13 @@ export default class ScrollIndicator extends GalleryComponent {
     }
 
     this.scrollEventListenerSet = true;
-    const scrollingElement = this.props.scrollingElement;
+    const { isRTL, setGotFirstScrollIfNeeded, scrollingElement, oneRow } =
+      this.props;
     //Horizontal Scroll
     this.onHorizontalScrollTransition = ({ detail }) => {
       const step = Math.round(detail);
       if (step >= 0) {
-        if (this.props.oneRow) {
+        if (oneRow) {
           this.setState({
             scrollTop: this.state.scrollTop + step, //todo use both scrollTop and scrollLeft
             scrollLeft: this.state.scrollLeft + step,
@@ -58,13 +60,12 @@ export default class ScrollIndicator extends GalleryComponent {
         }
       }
     };
-
     this.onHorizontalScroll = (e) => {
-      this.props.setGotFirstScrollIfNeeded();
+      setGotFirstScrollIfNeeded();
       const target = e.currentTarget || e.target || e;
       const top = target && (target.scrollY || target.scrollTop || target.y);
       let left = target && (target.scrollX || target.scrollLeft || target.x);
-      if (this.props.isRTL) {
+      if (isRTL) {
         left = Math.abs(left); //this.props.totalWidth - left;
       }
       // console.log('[RTL SCROLL] onHorizontalScroll: ', left);
@@ -79,6 +80,7 @@ export default class ScrollIndicator extends GalleryComponent {
         }
       }
     };
+
     try {
       scrollingElement
         .horizontal()
@@ -164,11 +166,21 @@ export default class ScrollIndicator extends GalleryComponent {
         data-scroll-base={verticalScrollBase}
         data-scroll-top={this.state.scrollTop}
         className={cssScrollHelper.calcScrollClasses(
-          domId,
-          scrollTopWithoutBase
+          scrollTopWithoutBase,
+          domId
         )}
-        style={{ display: 'none' }}
-      />
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          background: 'white',
+          zIndex: 99999,
+          padding: 10,
+          border: '1px solid blue',
+        }}
+      >
+        {this.state.scrollTop}
+      </div>
     );
   }
 }

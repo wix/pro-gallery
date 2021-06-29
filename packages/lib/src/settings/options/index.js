@@ -74,6 +74,7 @@ import gallerySizeRatio from './gallerySizeRatio';
 import allowContextMenu from './allowContextMenu';
 import galleryLayout from './galleryLayout';
 import scrollDirection from './scrollDirection';
+import animationDirection from './animationDirection';
 import scrollDuration from './scrollDuration';
 import isAutoSlideshow from './isAutoSlideshow';
 import loadMoreAmount from './loadMoreAmount';
@@ -84,6 +85,7 @@ import playButtonForAutoSlideShow from './playButtonForAutoSlideShow';
 import hidePlay from './hidePlay';
 import overlayBackground from './overlayBackground';
 import allowLeanGallery from './allowLeanGallery';
+import oneColorAnimationColor from './oneColorAnimationColor';
 import placeGroupsLtr from './placeGroupsLtr';
 import pauseAutoSlideshowOnHover from './pauseAutoSlideshowOnHover';
 import showVideoControls from './showVideoControls';
@@ -166,6 +168,7 @@ export default {
   allowContextMenu,
   galleryLayout,
   scrollDirection,
+  animationDirection,
   scrollDuration,
   isAutoSlideshow,
   loadMoreAmount,
@@ -176,16 +179,9 @@ export default {
   hidePlay,
   overlayBackground,
   allowLeanGallery,
+  oneColorAnimationColor,
   placeGroupsLtr,
   showVideoControls,
   pauseAutoSlideshowOnHover,
   shouldIndexDirectShareLinkInSEO,
 };
-
-// TODO = add the options:
-/*
-itemOpacity
-arrowsColor
-imageLoadingColor
-oneColorAnimationColor
-*/

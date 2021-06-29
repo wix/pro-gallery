@@ -149,7 +149,7 @@ function SideBar({ items, blueprintsManager, visible }) {
       </div>
       <h3 className={s.title}>Playground Gizmos</h3>
       <div className={s.controls}>
-        <Collapse accordion={true} bordered={true} defaultActiveKey={[]} onChange={() => { }}>
+        <Collapse accordion={true} defaultActiveKey={['Animations']} bordered={true} onChange={() => { }}>
           <Collapse.Panel header="Media" key="media">
             <Form layout="vertical">
               <Form.Item label="Number of Items" help="Set to 0 for Infinite items">
@@ -183,7 +183,7 @@ function SideBar({ items, blueprintsManager, visible }) {
             </Form>
           </Collapse.Panel>
           <Collapse.Panel header="Styles" key="styles">
-            <Form labelCol={{ span: 17 }} wrapperCol={{ span: 3 }}>
+          <Form layout="vertical">
               <Form.Item label="Show all Styles" labelAlign="left">
                 <Switch checked={!!gallerySettings.showAllStyles} onChange={e => setGallerySettings({ showAllStyles: e })} />
               </Form.Item>
@@ -208,9 +208,6 @@ function SideBar({ items, blueprintsManager, visible }) {
               </Form.Item>
               <Form.Item label="Use Blueprints" labelAlign="left">
                 <Switch checked={!!gallerySettings.useBlueprints} onChange={e => setGallerySettings({ useBlueprints: e })} />
-              </Form.Item>
-              <Form.Item label="Use Server Blueprints" labelAlign="left">
-                <Switch checked={!!gallerySettings.shouldUseBlueprintsFromServer} onChange={e => setGallerySettings({ shouldUseBlueprintsFromServer: e })} />
               </Form.Item>
               <Form.Item label="Use Inline Styles" labelAlign="left">
                 <Switch checked={!!gallerySettings.useInlineStyles} onChange={e => setGallerySettings({ useInlineStyles: e })} />

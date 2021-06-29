@@ -6,6 +6,7 @@ import { addPresetStyles } from '../presets/presets';
 import dimensionsHelper from '../helpers/dimensionsHelper';
 import { ItemsHelper } from '../helpers/itemsHelper';
 import processLayouts from '../helpers/layoutHelper.js';
+import { cssScrollHelper } from '../helpers/cssScrollHelper';
 
 class Blueprints {
   createBlueprint({
@@ -17,7 +18,6 @@ class Blueprints {
   }) {
     // cacheBlocker
     // if (this.cache[params]) return this.cache[params];
-
     let changedParams = {};
     try {
       const {
@@ -78,6 +78,14 @@ class Blueprints {
           existingBlueprint.container = formattedContainer;
         }
         existingBlueprint.structure = structure;
+
+        existingBlueprint.scrollAnimationsCss = this.createCssAnimations({
+          items: structure.items,
+          container: existingBlueprint.container,
+          styleParams: existingBlueprint.styles,
+          domId: params.domId,
+        });
+        console.log({ existingBlueprint });
 
         // if its an infinite gallery - let the container loose
         const isInfinite =
@@ -347,6 +355,15 @@ class Blueprints {
     // }
 
     return this.layouter.createLayout(layoutParams);
+  }
+
+  createCssAnimations({ items, container, styleParams, domId }) {
+    return cssScrollHelper.calcScrollCss({
+      items,
+      container,
+      styleParams,
+      domId,
+    });
   }
 }
 const blueprints = new Blueprints();
