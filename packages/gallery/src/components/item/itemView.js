@@ -12,7 +12,7 @@ import {
 import ImageItem from './imageItem.js';
 import TextItem from './textItem.js';
 import ItemHover from './itemHover.js';
-import { changeActiveElementIfNeeded, onAnchorFocus } from './itemHelper.js';
+import { changeActiveElementIfNeeded, onAnchorFocus, getImageDimensions } from './itemHelper.js';
 import { cssScrollHelper } from '../helpers/cssScrollHelper';
 import { GalleryComponent } from '../galleryComponent';
 import {
@@ -344,48 +344,6 @@ class ItemView extends GalleryComponent {
 
   //---------------------------------------| COMPONENTS |-----------------------------------------//
 
-  getImageDimensions() {
-    //image dimensions are for images in grid fit - placing the image with positive margins to show it within the square
-    const { styleParams, cubeRatio, style } = this.props;
-    const isLandscape = style.ratio >= cubeRatio; //relative to container size
-    const imageMarginLeft = Math.round(
-      (style.height * style.ratio - style.width) / -2
-    );
-    const imageMarginTop = Math.round(
-      (style.width / style.ratio - style.height) / -2
-    );
-    const isGridFit = styleParams.cubeImages && styleParams.cubeType === 'fit';
-
-    let dimensions = {};
-
-    if (!isGridFit) {
-      dimensions = {
-        width: style.width,
-        height: style.height,
-      };
-    } else if (isGridFit && isLandscape) {
-      dimensions = {
-        //landscape
-        height: style.height - 2 * imageMarginTop,
-        width: style.width,
-        margin: `${imageMarginTop}px 0`,
-      };
-    } else if (isGridFit && !isLandscape) {
-      dimensions = {
-        //portrait
-        width: style.width - 2 * imageMarginLeft,
-        height: style.height,
-        margin: `0 ${imageMarginLeft}px`,
-      };
-    }
-    if (
-      styleParams.itemBorderRadius &&
-      styleParams.imageInfoType !== GALLERY_CONSTS.infoType.ATTACHED_BACKGROUND
-    ) {
-      dimensions.borderRadius = styleParams.itemBorderRadius + 'px';
-    }
-    return dimensions;
-  }
 
   getItemHover(imageDimensions) {
     const { customHoverRenderer, ...props } = this.props;
@@ -491,7 +449,7 @@ class ItemView extends GalleryComponent {
   getItemInner() {
     const { styleParams, type } = this.props;
     let itemInner;
-    const imageDimensions = this.getImageDimensions();
+    const imageDimensions = getImageDimensions(this.props);
     const { width, height, margin } = imageDimensions;
 
     const itemStyles = { width, height };
@@ -811,7 +769,7 @@ class ItemView extends GalleryComponent {
     styles.margin = -styleParams.itemBorderWidth + 'px';
     styles.height = height + 'px';
 
-    const imageDimensions = this.getImageDimensions();
+    const imageDimensions = getImageDimensions(this.props);
 
     const itemWrapperStyles = {
       ...styles,

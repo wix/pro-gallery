@@ -5,6 +5,7 @@ import sinon from 'sinon';
 import GalleryDriver from '../../drivers/reactDriver';
 import { testImages } from '../../drivers/mocks/images-mock';
 import ItemView from '../../../src/components/item/itemView';
+import { getImageDimensions } from '../../../src/components/item/itemHelper';
 import VideoItemPlaceholder from '../../../src/components/item/videos/videoItemPlaceholder';
 
 describe('Item View', () => {
@@ -141,6 +142,7 @@ describe('Item View', () => {
         styleParams: {
           cubeImages: false,
           cubeType: 'fit',
+          itemBorderWidth: 0,
         },
         style: {
           bgColor: 'none',
@@ -153,18 +155,21 @@ describe('Item View', () => {
           height: 1000,
           cubedHeight: 1000,
         },
+        requiredRatio: 1.92,
       });
-      driver.mount(ItemView, sampleItemViewProps);
+      // driver.mount(ItemView, sampleItemViewProps);
       //IMPORTANT use deep when trying to compare objects
-      expect(driver.get.instance().getImageDimensions()).to.deep.equal({
+      expect(getImageDimensions(sampleItemViewProps)).to.deep.equal({
         width: 1920,
         height: 1000,
+        margin: '0px 0px',
       });
 
-      driver.set.props({
+      Object.assign(sampleItemViewProps, {
         styleParams: {
           cubeImages: true,
           cubeType: 'foo',
+          itemBorderWidth: 0,
         },
         style: {
           bgColor: 'none',
@@ -177,16 +182,19 @@ describe('Item View', () => {
           height: 1000,
           cubedHeight: 1000,
         },
+        requiredRatio: 1.92,
       });
-      expect(driver.get.instance().getImageDimensions()).to.deep.equal({
+      expect(getImageDimensions(sampleItemViewProps)).to.include({
         width: 1920,
         height: 1000,
+        margin: '0px 0px',
       });
 
-      driver.set.props({
+      Object.assign(sampleItemViewProps, {
         styleParams: {
           cubeImages: true,
           cubeType: 'fit',
+          itemBorderWidth: 0,
         },
         style: {
           bgColor: 'none',
@@ -199,16 +207,18 @@ describe('Item View', () => {
           height: 1000,
           cubedHeight: 1000,
         },
+        requiredRatio: 1.92,
       });
       //IMPORTANT notice marginTop is -0. if it was just 0 it wouldnt deep equal the -0 that returns from the function (the value is devided by -2 in the function)
-      let testObject = driver.get.instance().getImageDimensions();
+      let testObject = getImageDimensions(sampleItemViewProps);
       expect(testObject.width).to.equal(1920);
       expect(testObject.height).to.equal(1000);
-      expect(testObject.margin).to.equal('0px 0');
-      driver.set.props({
+      expect(testObject.margin).to.equal('0px 0px');
+      Object.assign(sampleItemViewProps, {
         styleParams: {
           cubeImages: true,
           cubeType: 'fit',
+          itemBorderWidth: 0,
         },
         style: {
           bgColor: 'none',
@@ -221,11 +231,12 @@ describe('Item View', () => {
           height: 1000,
           cubedHeight: 1000,
         },
+        requiredRatio: 1.0,
       });
-      testObject = driver.get.instance().getImageDimensions();
+      testObject = getImageDimensions(sampleItemViewProps);
       expect(testObject.width).to.equal(1000);
       expect(testObject.height).to.equal(1000);
-      expect(testObject.margin).to.equal('0 460px');
+      expect(testObject.margin).to.equal('0px 460px');
     });
   });
   // describe('isVisible', () => {

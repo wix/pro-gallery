@@ -471,6 +471,13 @@ export class Item {
     this.orgRatio = r;
   }
 
+  get requiredRatio() {
+    if (this.cubeImages && this.cubeType === 'fit') {
+      return this.ratio;
+    }
+    return this.width / this.height;
+  }
+
   get roundedStyle() {
     return {
       ...this.style,
@@ -496,6 +503,7 @@ export class Item {
       ratio: this.ratio,
       dimensions: this.dimensions,
       cropRatio: this.cubeRatio,
+      requiredRatio: this.requiredRatio,
       isCropped: this.cubeImages,
       cropType: this.cubeType,
       height: this.height,
