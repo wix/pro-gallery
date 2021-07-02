@@ -460,6 +460,13 @@ export class Item {
     return this.orientation === 'landscape';
   }
 
+  get requiredRatio() {
+    if (this.cubeImages && this.cubeType === 'fit') {
+      return this.ratio;
+    }
+    return this.width / this.height;
+  }
+
   get ratio() {
     if (!this.orgRatio) {
       this.orgRatio = this.orgWidth / this.orgHeight;
@@ -496,6 +503,7 @@ export class Item {
       ratio: this.ratio,
       dimensions: this.dimensions,
       cropRatio: this.cubeRatio,
+      requiredRatio: this.requiredRatio,
       isCropped: this.cubeImages,
       cropType: this.cubeType,
       height: this.height,
